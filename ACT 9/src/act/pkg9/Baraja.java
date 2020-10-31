@@ -51,7 +51,7 @@ public class Baraja {
     System.out.println("pertenece al palo: "+carta.palo);
     System.out.println("y tiene un valor de:"+carta.valor);
     cartas.remove(0);
-    System.out.println("tamaño"+cartas.size());
+    System.out.println(" tamaño " +cartas.size());
     }
     
     public void pick(){
@@ -61,14 +61,14 @@ public class Baraja {
     System.out.println("y tiene un valor de:"+carta.valor);
     cartas.remove(5);
     Collections.shuffle(cartas);
-    System.out.println("tamaño"+cartas.size());
+    System.out.println("tamaño " +cartas.size());
     }
     
     
     public void hand(){
     
         {Carta carta=cartas.get(8);
-    System.out.println ("Carta numero 4");
+    System.out.println ("Carta numero 5");
     System.out.println("tu carta es color:" +carta.color);
     System.out.println("pertenece al palo: "+carta.palo);
     System.out.println("y tiene un valor de:"+carta.valor);
@@ -118,34 +118,44 @@ public class Baraja {
     public void showMenu(){
         boolean salir=true;
         while (salir){
-            int opcion;
+            String opcion;
             System.out.println("Bienvenido a poker!");
             System.out.println("Selecciona una opcion:");
             System.out.println("1:para mezclar todas las cartas del deck");
             System.out.println("2:head mostrar la primera carta del deck");
             System.out.println("3:pick para mostrar una carta random del deck");
             System.out.println("4: hand devuelve 5 cartas aleatorias del deck");
-            opcion=input.nextInt();
+            opcion=input.nextLine();
             switch (opcion){
-                case 1:
+                case "1":
                     mezclar();
                     break;
-                case 2:
+                case "2":
                     head();
                     break;
-                case 3:
+                case "3":
                     pick();
                     break;
-                case 4:
+                case "4":
                     hand();
-                default:
-                    salir=false;
                     break;
-                
-                
+                default:
+                    System.out.println("opcion no valida");
+                    System.out.println("");
+                    break;
+                 case"5":
+                  salir=false;
+                    break;   
+                  
             }
-            
-            
+           
+            try{ 
+        if(cartas.size() <= 0){
+            throw new Exception("Se han agotado las cartas " + " "+ "Gracias por jugar "+" "+" escribe 5 para salir");
+            }
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        } 
         }
+    } 
     }
-}

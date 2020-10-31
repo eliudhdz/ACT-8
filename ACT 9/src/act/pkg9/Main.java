@@ -23,5 +23,6 @@ public class Main {
        baraja.head();
        baraja.pick();
        baraja.hand();
+       
         }
     }
